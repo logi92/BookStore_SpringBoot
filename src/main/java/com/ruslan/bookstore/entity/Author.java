@@ -1,10 +1,7 @@
 package com.ruslan.bookstore.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "authors")
@@ -20,14 +17,6 @@ public class Author {
     public Author() {
     }
 
-    @ManyToMany(mappedBy = "authors")
-    @JsonIgnore
-    private Set<Book> books;
-
-    public Set<Book> getBooks() {
-        return books;
-    }
-
     public long getAuthorId() {
         return authorId;
     }
@@ -40,10 +29,6 @@ public class Author {
         this.name = name;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
-
     @Override
     public String toString() {
         return name ;
@@ -54,11 +39,11 @@ public class Author {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
-        return authorId == author.authorId && Objects.equals(name, author.name) && Objects.equals(books, author.books);
+        return authorId == author.authorId && Objects.equals(name, author.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(authorId, name, books);
+        return Objects.hash(authorId, name);
     }
 }

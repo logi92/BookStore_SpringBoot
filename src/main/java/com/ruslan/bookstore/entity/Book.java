@@ -33,13 +33,11 @@ public class Book {
     @ManyToMany
     @JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    @JsonIgnore
     private Set<Author> authors = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "book_genre", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
-    @JsonIgnore
     private Set<Genre> genres = new HashSet<>();
 
     public Book() {

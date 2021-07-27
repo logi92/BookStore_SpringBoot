@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//// TODO: 26.07.2021  Доделать Бук Сервис и бук Админ Контроллер.
-// // TODO: 26.07.2021 Начать с форм пейдж для создания новой книги
+// TODO: 26.07.2021  Доделать Бук Сервис и бук Админ Контроллер.
+// TODO: 26.07.2021 Начать с форм пейдж для создания новой книги
+// TODO: 26.07.2021 Сделать Paging
 @Service
 public class BookServices {
     private BookRepository bookRepository;
