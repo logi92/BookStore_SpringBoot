@@ -5,7 +5,9 @@ import com.ruslan.bookstore.Repository.GenreRepository;
 import com.ruslan.bookstore.entity.Author;
 import com.ruslan.bookstore.entity.Book;
 import com.ruslan.bookstore.entity.Genre;
+import com.ruslan.bookstore.service.AuthorService;
 import com.ruslan.bookstore.service.BookServices;
+import com.ruslan.bookstore.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +20,14 @@ import java.util.Set;
 @RequestMapping("/admin")
 public class BookController {
     private BookServices bookServices;
-    private AuthorRepository authorRepository;
-    private GenreRepository genreRepository;
+    private AuthorService authorService;
+    private GenreService genreService;
 
     @Autowired
-    public BookController(BookServices bookServices, AuthorRepository authorRepository, GenreRepository genreRepository) {
+    public BookController(BookServices bookServices, AuthorService authorService, GenreService genreService) {
         this.bookServices = bookServices;
-        this.authorRepository = authorRepository;
-        this.genreRepository = genreRepository;
+        this.authorService = authorService;
+        this.genreService = genreService;
     }
 
     @GetMapping("/list_books")
@@ -38,8 +40,8 @@ public class BookController {
     // TODO: 27.07.2021 в эту форму нужно передавать список жанров и авторов
     @PostMapping("/create_book")
     public String showBookNewForm(Model model) {
-        List<Author> authorList = authorRepository.findAll();
-        List<Genre> genreList = genreRepository.findAll();
+        List<Author> authorList = authorService.listAllAuthors();
+        List<Genre> genreList = genreService.listAllGenres();
 
         model.addAttribute("authors", authorList);
         model.addAttribute("genres", genreList);
