@@ -1,0 +1,26 @@
+1. SQL для вывода таблицы с ИМенем автора, названием книги и жанром.
+select
+  a_t.author_name,
+  a_t.title,
+  g_t.genre_name
+from
+  (
+    select
+      genre_name,
+      title
+    from
+      genres
+      inner join book_genre on genres.genre_id = book_genre.genre_id
+      inner join books on books.book_id = book_genre.book_id
+  ) as g_t
+  inner join (
+    select
+      author_name,
+      title
+    from
+      authors
+      inner join book_author on authors.author_id = book_author.author_id
+      inner join books on book_author.book_id = books.book_id
+  ) as a_t on a_t.title = g_t.title
+order by
+  title;

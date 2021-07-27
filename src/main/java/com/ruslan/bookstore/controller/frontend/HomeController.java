@@ -18,7 +18,7 @@ public class HomeController {
         this.bookServices = bookServices;
     }
 
-    @RequestMapping("/home")
+    @RequestMapping("")
     public String listBooks(Model model) {
         List<Book> bookList = bookServices.listBooks();
         model.addAttribute("books", bookList);
