@@ -24,8 +24,11 @@ public class BookController {
         return bookServices.listBooks();
     }
 
+    // TODO: 27.07.2021 Сделать метод который перенаправляет в форму создания книги,
+    // TODO: 27.07.2021 в эту форму нужно передавать список жанров и авторов
     @PostMapping("/create_book")
-    public void createBook(@RequestBody Book book) {
+    public String showBookNewForm() {
 
+        return "";
     }
 }

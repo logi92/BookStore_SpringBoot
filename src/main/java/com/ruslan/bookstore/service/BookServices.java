@@ -19,10 +19,15 @@ public class BookServices {
         this.bookRepository = bookRepository;
     }
 
+    /**
+     * Метод для получения всех книг из БД
+     * @return
+     */
     public List<Book> listBooks(){
         List<Book> bookList = bookRepository.findAll();
         return bookList;
     }
+
 
     
 }
